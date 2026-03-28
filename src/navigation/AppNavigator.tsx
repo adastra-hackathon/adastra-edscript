@@ -13,6 +13,16 @@ import { SettingsScreen } from '../features/user/screens/SettingsScreen';
 import { DepositScreen } from '../features/wallet/screens/DepositScreen';
 import { WithdrawScreen } from '../features/wallet/screens/WithdrawScreen';
 import { NotificationsScreen } from '../features/notifications/screens/NotificationsScreen';
+import { GameRoomModeScreen } from '../features/game-room/screens/GameRoomModeScreen';
+import { GameRoomListScreen } from '../features/game-room/screens/GameRoomListScreen';
+import { CreateGameRoomScreen } from '../features/game-room/screens/CreateGameRoomScreen';
+import { GameRoomLobbyScreen } from '../features/game-room/screens/GameRoomLobbyScreen';
+import { GameRoomGameScreen } from '../features/game-room/screens/GameRoomGameScreen';
+import { GameRoomResultScreen } from '../features/game-room/screens/GameRoomResultScreen';
+import { PredictionRoomListScreen } from '../features/prediction/screens/PredictionRoomListScreen';
+import { CreatePredictionRoomScreen } from '../features/prediction/screens/CreatePredictionRoomScreen';
+import { PredictionRoomLobbyScreen } from '../features/prediction/screens/PredictionRoomLobbyScreen';
+import { PredictionRoomResultScreen } from '../features/prediction/screens/PredictionRoomResultScreen';
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
@@ -39,6 +49,19 @@ export const AppNavigator = memo(function AppNavigator() {
       <Stack.Screen name="Tournaments" component={TournamentsScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="Notifications" component={NotificationsScreen} />
+      {/* Salas Competitivas */}
+      <Stack.Screen name="GameRoomMode" component={GameRoomModeScreen} />
+      {/* Modo Duelo */}
+      <Stack.Screen name="GameRoomList" component={GameRoomListScreen} />
+      <Stack.Screen name="GameRoomCreate" component={CreateGameRoomScreen} />
+      <Stack.Screen name="GameRoomLobby" component={GameRoomLobbyScreen} />
+      <Stack.Screen name="GameRoomGame" component={GameRoomGameScreen} />
+      <Stack.Screen name="GameRoomResult" component={GameRoomResultScreen} />
+      {/* Modo Apostas */}
+      <Stack.Screen name="PredictionRoomList" component={PredictionRoomListScreen} />
+      <Stack.Screen name="PredictionRoomCreate" component={CreatePredictionRoomScreen} />
+      <Stack.Screen name="PredictionRoomLobby" component={PredictionRoomLobbyScreen} />
+      <Stack.Screen name="PredictionRoomResult" component={PredictionRoomResultScreen} />
     </Stack.Navigator>
   );
 });

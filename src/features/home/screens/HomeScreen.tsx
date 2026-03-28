@@ -35,6 +35,7 @@ import {
   HistoryIcon,
   HeadsetIcon,
   GearIcon,
+  CasinoIcon,
 } from '../../../components/icons';
 
 const ICON_SIZE = 20;
@@ -135,6 +136,14 @@ export const HomeScreen = memo(function HomeScreen() {
       icon: <HomeIcon size={ICON_SIZE} color={route.name === 'Home' ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE} />,
       onPress: () => setMenuOpen(false),
       active: route.name === 'Home',
+    },
+    {
+      label: 'Salas Competitivas',
+      icon: <CasinoIcon size={ICON_SIZE} color={ICON_COLOR_INACTIVE} />,
+      onPress: () => {
+        setMenuOpen(false);
+        if (isAuthenticated) navigation.navigate('App', { screen: 'GameRoomMode' });
+      },
     },
     {
       label: 'Tutoriais',

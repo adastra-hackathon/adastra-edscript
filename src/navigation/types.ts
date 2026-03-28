@@ -44,11 +44,25 @@ export type AppStackParamList = {
   Tournaments: undefined;
   Settings: undefined;
   Notifications: undefined;
+  // Salas Competitivas — seleção de modo
+  GameRoomMode: undefined;
+  // Modo Duelo
+  GameRoomList: undefined;
+  GameRoomCreate: undefined;
+  GameRoomLobby: { roomId: string };
+  GameRoomGame: { roomId: string };
+  GameRoomResult: { roomId: string };
+  // Modo Apostas
+  PredictionRoomList: undefined;
+  PredictionRoomCreate: undefined;
+  PredictionRoomLobby: { roomId: string };
+  PredictionRoomResult: { roomId: string };
 };
 
 // ─── Root Stack ──────────────────────────────────────────────────────────────
 
 export type RootStackParamList = {
+  Startup: undefined;
   Public: NavigatorScreenParams<PublicStackParamList>;
   Auth: NavigatorScreenParams<AuthStackParamList>;
   App: NavigatorScreenParams<AppStackParamList>;

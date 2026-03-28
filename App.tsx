@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -44,6 +45,14 @@ function AppContent() {
 
 export default function App() {
   const { fontsLoaded, error } = useAppFonts();
+
+  useEffect(() => {
+    // Se fontes falharem, garante que o splash nativo seja escondido
+    // mesmo sem a StartupScreen montar (edge case)
+    if (error) {
+      SplashScreen.hideAsync();
+    }
+  }, [error]);
 
   if (!fontsLoaded && !error) {
     return null;

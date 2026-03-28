@@ -4,3 +4,5 @@ export { Input } from './Input';
 export { Card } from './Card';
 export { Divider } from './Divider';
 export { Checkbox } from './Checkbox';
+export { SelectModal } from './SelectModal';
+export type { SelectOption } from './SelectModal';

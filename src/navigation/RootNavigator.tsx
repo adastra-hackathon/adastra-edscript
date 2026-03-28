@@ -1,8 +1,7 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useAuthStore } from '../store/authStore';
-import { tokenStorage } from '../core/storage';
-import { authService } from '../features/auth/services/authService';
+import { StartupScreen } from '../screens/startup/StartupScreen';
 import { PublicNavigator } from './PublicNavigator';
 import { AuthNavigator } from './AuthNavigator';
 import { AppNavigator } from './AppNavigator';
@@ -13,44 +12,19 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 /**
  * RootNavigator — orquestra os 3 stacks principais:
  *
+ * Startup → boot da app (token recovery, session validation, navegação)
  * Public  → tabs acessíveis a todos (Home, Casino, Sports...)
  * Auth    → Login / Register / ForgotPassword
  * App     → rotas protegidas (Bets, Wallet, Profile...)
- *
- * O stack "App" só é acessível após autenticação.
- * O guard real é feito em useProtectedRoute (cada tela protegida)
- * + aqui no RootNavigator para segurança de camada dupla.
  */
 export const RootNavigator = memo(function RootNavigator() {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
-  const setLoading = useAuthStore((s) => s.setLoading);
-  const login = useAuthStore((s) => s.login);
-
-  // Verifica token persistido no boot da app
-  useEffect(() => {
-    async function checkToken() {
-      const token = await tokenStorage.getAccessToken();
-      const refresh = await tokenStorage.getRefreshToken();
-
-      if (!token) {
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const user = await authService.me();
-        await login(user, token, refresh ?? '');
-      } catch (e) {
-        console.log('me() falhou, limpando tokens. Erro:', e);
-        await tokenStorage.clearTokens();
-        setLoading(false);
-      }
-    }
-    checkToken();
-  }, [setLoading, login]);
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {/* Startup — primeiro a montar, navega via reset após boot */}
+      <Stack.Screen name="Startup" component={StartupScreen} />
+
       {/* Public sempre presente — base da navegação */}
       <Stack.Screen name="Public" component={PublicNavigator} />
 
