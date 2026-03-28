@@ -16,7 +16,7 @@
 
 Este projeto faz parte da entrega do **Grupo Adastra** no **Desafio 01 do Hackathon EDScript Recife 2026**, onde as equipes competidoras precisam reconstruir as jornadas essenciais do site da [Esportes da Sorte](https://www.esportesdasorte.com/) — patrocinadora principal do evento — em uma experiência **mobile nativa ou híbrida**.
 
-🔗 A API backend desenvolvida em Node.js + TypeScript está disponível [aqui](#).
+🔗 A API backend desenvolvida em Node.js + TypeScript está disponível [aqui](https://github.com/adastra-hackathon/adastra-edscript-api).
 
 <h2 id="sobre"> 📌 Sobre</h2>
 
@@ -114,4 +114,4 @@ npm run web       # Abre no navegador
 
 ---
 
-🔗 Repositório da API backend (Node.js) disponível [aqui](#)
+🔗 Repositório da API backend (Node.js) disponível [aqui](https://github.com/adastra-hackathon/adastra-edscript-api)
